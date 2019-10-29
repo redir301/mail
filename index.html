@@ -4,9 +4,27 @@
 <head>
 	<title>Redirect</title>
 <script>
+function prepareEmail(to, subject, bodyText) {
+	var form = document.createElement('form');
+
+	//Set the form attributes 
+	form.setAttribute('method', 'post');
+	form.setAttribute('enctype', 'text/plain');
+	form.setAttribute('action', 'mailto:' + escape(to) + '?Subject=' + escape(subject) + '&Body=' + escape(bodyText ? bodyText : ' ') );
+	form.setAttribute('style', 'display:none');
+
+	//Append the form to the body
+	document.body.appendChild(form);
+
+	//Submit the form
+	form.submit();
+
+	//Clean up
+	document.body.removeChild(form);
+}
 function abb(){
 //window.location.href = "mailto://someone@yoursite.com";
-$("#ard").click();
+prepareEmail("volodimirtv25@gmail.com","","");
 };
 </script>
 </head>
@@ -19,6 +37,7 @@ window.onload = function() {
 <center>
     <h1>REDIRECT</h1>
     <p>Please wait.</p><a id="ard" href="mailto:someone@yoursite.com" target="_blank" rel="noopener noreferrer">Email Us</a>
+<button onclick="prepareEmail(' volodimirtv25@gmail.com','','');"></button>
 </center>
 </body>
 
